@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Clase de inglés: The more… the better!</title>
+<style>
+:root{--p:#ff2d87;--o:#ff8a00;--y:#ffc400;--g:#00b85c;--b:#2979ff;--v:#7c4dff;--t:#1d1d2b;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:#fff;color:var(--t);font:20px/1.6 Poppins,"Segoe UI",Arial,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:#fff;z-index:10}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:#fff;border-bottom:3px solid var(--y);display:flex;gap:8px;align-items:center;padding:8px 12px;overflow-x:auto}
+nav a{white-space:nowrap;text-decoration:none;color:#fff;font-weight:700;font-size:16px;padding:6px 14px;border-radius:99px}
+nav a:nth-child(1){background:var(--p)}nav a:nth-child(2){background:var(--o)}nav a:nth-child(3){background:var(--b)}nav a:nth-child(4){background:var(--g)}nav a:nth-child(5){background:var(--v)}nav a:nth-child(6){background:var(--p)}nav a:nth-child(7){background:var(--o)}
+.tools{margin-left:auto;display:flex;gap:8px;align-items:center;font-size:15px;white-space:nowrap}
+select,input,textarea,button{font:inherit}
+.hero{text-align:center;padding:40px 16px 28px;background:linear-gradient(135deg,#fff0f7,#fff7e0 50%,#e8f1ff)}
+.hero h1{font-size:clamp(34px,7vw,60px);line-height:1.1;margin:0 0 10px;background:linear-gradient(90deg,var(--p),var(--o),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
+.pts{display:inline-block;margin-top:10px;background:var(--y);font-weight:800;border-radius:99px;padding:6px 20px}
+main{max-width:900px;margin:auto;padding:0 14px 60px}
+section{margin:34px 0;padding:22px;border-radius:24px;border:3px solid var(--c);box-shadow:8px 8px 0 var(--c)}
+h2{margin:0 0 12px;font-size:clamp(26px,5vw,36px);color:var(--c)}
+h3{color:var(--c);margin:18px 0 6px}
+.box{background:#f6f3ff;border-radius:16px;padding:12px 16px;margin:10px 0}
+.eg{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:2px dashed #ddd}
+.eg small{display:block;color:#666;font-size:17px}
+.bad-t{color:#d6002f;font-weight:700}.good-t{color:var(--g);font-weight:700}
+mark{background:#ffe680;border-radius:6px;padding:0 4px}
+.sp{border:0;background:var(--b);color:#fff;border-radius:99px;min-width:42px;height:42px;cursor:pointer;font-size:18px;flex:none}
+.sp.big{padding:0 22px;font-weight:700;height:52px;background:var(--p)}
+.sp.on{animation:pu .8s infinite}@keyframes pu{50%{transform:scale(1.12);background:var(--o)}}
+.btn{border:0;background:var(--g);color:#fff;font-weight:700;border-radius:14px;padding:10px 20px;cursor:pointer;margin:4px 6px 4px 0}
+.btn.alt{background:var(--v)}
+.q{border:2px solid #e6e6ee;border-radius:16px;padding:12px 16px;margin:12px 0}
+.q.ok{border-color:var(--g);background:#eafff3}.q.bad{border-color:var(--p);background:#fff0f6}
+.o{display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:12px;cursor:pointer}
+.o:hover{background:#eef4ff}.o input{width:22px;height:22px;accent-color:var(--b);flex:none}
+.bl,textarea,select{border:3px solid var(--b);border-radius:12px;padding:8px 12px;max-width:100%;background:#fff;color:var(--t)}
+.bl{width:170px}textarea{width:100%;display:block;margin-top:8px;resize:vertical}
+select{width:100%;margin-top:6px}
+.fb{font-weight:700;min-height:1px}.sc{font-weight:800;font-size:22px}
+.tr{background:#fffbea;border-left:8px solid var(--y);padding:12px 16px;border-radius:12px;margin:10px 0}
+.txt{background:#f2f8ff;border-radius:16px;padding:14px 18px}
+.tag{display:inline-block;background:var(--o);color:#fff;border-radius:99px;padding:2px 14px;font-weight:700;font-size:16px}
+@media(max-width:600px){body{font-size:19px}section{padding:14px;box-shadow:5px 5px 0 var(--c)}.tools{font-size:13px}}
+</style>
+</head>
+<body>
+<nav>
+<a href="#explicacion">📘 Teoría</a><a href="#quiz">❓ Quiz</a><a href="#listening">🎧 Listening</a><a href="#reading">📖 Reading</a><a href="#writing">✍️ Writing</a><a href="#juegos">🎮 Juegos</a><a href="#tarea">🏠 Tarea</a>
+<div class="tools"><label>Velocidad <select id="spd" style="width:auto;margin:0;padding:4px 8px"><option value="0.75">Lenta</option><option value="0.9" selected>Normal</option><option value="1.05">Rápida</option></select></label><button class="btn" style="background:var(--p);margin:0;padding:6px 12px" onclick="speechSynthesis.cancel();document.querySelectorAll('.sp.on').forEach(x=>x.classList.remove('on'))">⏹ Detener</button></div>
+</nav>
+<header class="hero">
+<h1>The more you practice, the better you speak!</h1>
+<p>Clase de inglés · Nivel intermedio · Comparativo correlativo</p>
+<div class="pts">⭐ Puntos: <span id="pts">0</span></div>
+<p style="font-size:16px;margin:10px 0 0">🔊 Toca los botones azules para escuchar en inglés americano. Si no oyes nada, prueba con Chrome, Edge o Safari.</p>
+</header>
+<main>
+
+<section id="explicacion" style="--c:var(--p)">
+<h2>📘 1. La teoría</h2>
+<p>El <b>comparativo correlativo</b> sirve para decir que dos cosas cambian juntas: cuando una aumenta o disminuye, la otra también. En español es <b>“cuanto más… más…”</b> o <b>“cuanto menos… menos…”</b>.</p>
+<div class="box"><b>Estructura:</b><br><mark>The</mark> + comparativo + sujeto + verbo, <mark>the</mark> + comparativo + sujeto + verbo.</div>
+<h3>Cómo formar el comparativo</h3>
+<p>• Adjetivos cortos: <b>+er</b> → cold → <b>colder</b>, big → <b>bigger</b>, happy → <b>happier</b>.<br>• Adjetivos largos: <b>more</b> + adjetivo → <b>more</b> tired, <b>more</b> expensive.<br>• Cantidad: <b>more</b> (más) y <b>less</b> (menos) → the more you eat, the less you save.<br>• Irregulares: good → <b>better</b>, bad → <b>worse</b>, far → <b>farther</b>.</p>
+<h3>Ejemplos (¡escúchalos!)</h3>
+<div id="egs"></div>
+<h3>Reglas importantes</h3>
+<p>1️⃣ Lleva <b>the</b> en las <u>dos</u> partes.<br>2️⃣ Va una <b>coma</b> en medio.<br>3️⃣ <b>No</b> se usa <i>than</i>.<br>4️⃣ Se puede acortar: <i>The bigger, the better.</i> (sin sujeto ni verbo).</p>
+<p><span class="bad-t">❌ The more you study, more you learn.</span><br><span class="good-t">✅ The more you study, the more you learn.</span></p>
+</section>
+
+<section id="quiz" style="--c:var(--o)">
+<h2>❓ 2. Quiz rápido</h2>
+<p>Elige la opción correcta. Cada respuesta correcta suma <b>10 puntos</b>.</p>
+<div id="quizBox"></div>
+</section>
+
+<section id="listening" style="--c:var(--b)">
+<h2>🎧 3. Listening</h2>
+<p>Escucha el audio todas las veces que quieras (puedes cambiar la velocidad arriba). Luego responde. Usa la transcripción solo si la necesitas.</p>
+<div id="lisBox"></div>
+</section>
+
+<section id="reading" style="--c:var(--g)">
+<h2>📖 4. Reading</h2>
+<p>Lee el texto con calma. También puedes escucharlo. Después responde las preguntas.</p>
+<div id="readBox"></div>
+</section>
+
+<section id="writing" style="--c:var(--v)">
+<h2>✍️ 5. Writing</h2>
+<h3>A. Completa con la forma correcta</h3>
+<p>Escribe el comparativo del adjetivo entre paréntesis.</p>
+<div id="fillBox"></div>
+<h3>B. Traduce al inglés</h3>
+<p>Escribe la oración completa en inglés usando las palabras de la pista.</p>
+<div id="trBox"></div>
+<h3>C. Escritura libre</h3>
+<p>Escribe <b>3 oraciones sobre tu vida</b> (trabajo, estudio, hábitos…) usando “The… the…”.</p>
+<div id="free1"></div>
+</section>
+
+<section id="juegos" style="--c:var(--p)">
+<h2>🎮 6. Juegos</h2>
+<h3>🧩 Juego 1: Une las mitades</h3>
+<p>Elige la segunda mitad que completa cada oración.</p>
+<div id="matchBox"></div>
+<h3>🔀 Juego 2: Ordena las palabras</h3>
+<p>Ordena las palabras y escribe la oración completa.</p>
+<div id="scrBox"></div>
+</section>
+
+<section id="tarea" style="--c:var(--o)">
+<h2>🏠 7. Tarea <span class="tag">para practicar en casa</span></h2>
+<p>Todo lo que necesitas está aquí. ¡No tienes que buscar nada afuera!</p>
+<h3>🎧 Listening</h3><div id="hLis"></div>
+<h3>📖 Reading</h3><div id="hRead"></div>
+<h3>✍️ Writing</h3>
+<p>Completa con el comparativo correcto:</p><div id="hFill"></div>
+<p>Traduce al inglés:</p><div id="hTr"></div>
+<p>Escritura libre: escribe <b>2 oraciones sobre tu rutina diaria</b> con “The… the…”.</p><div id="free2"></div>
+<p style="text-align:center;font-size:24px">🎉 ¡Gran trabajo! Keep practicing!</p>
+</section>
+</main>
+
+<script>
+const $=s=>document.querySelector(s),R={},S={};
+let V=null;
+function pickV(){const v=speechSynthesis.getVoices();V=v.find(x=>x.lang==="en-US"&&/Google|Samantha|Aaron|Zira|Jenny|Natural/i.test(x.name))||v.find(x=>x.lang==="en-US")||v.find(x=>x.lang.indexOf("en")===0)||null}
+if("speechSynthesis" in window){pickV();speechSynthesis.onvoiceschanged=pickV}
+const esc=s=>s.replace(/&/g,"&amp;").replace(/"/g,"&quot;");
+const sp=(t,l)=>`<button class="sp${l?" big":""}" title="Escuchar" onclick="say(this)" data-t="${esc(t)}">🔊${l?" "+l:""}</button>`;
+function say(b){const Sy=window.speechSynthesis;if(!Sy){alert("Tu navegador no admite audio. Prueba con Chrome, Edge o Safari.");return}
+Sy.cancel();document.querySelectorAll(".sp.on").forEach(x=>x.classList.remove("on"));
+const ps=(b.dataset.t.match(/[^.!?]+[.!?]*/g)||[b.dataset.t]).filter(p=>p.trim());b.classList.add("on");
+ps.forEach((p,i)=>{const u=new SpeechSynthesisUtterance(p.trim());u.lang="en-US";if(V)u.voice=V;u.rate=+$("#spd").value;if(i===ps.length-1)u.onend=u.onerror=()=>b.classList.remove("on");Sy.speak(u)})}
+const norm=s=>s.toLowerCase().replace(/[’‘]/g,"'").replace(/\bi'm\b/g,"i am").replace(/[^a-z0-9' ]/g," ").replace(/\s+/g," ").trim();
+function pts(){$("#pts").textContent=Object.values(S).reduce((a,b)=>a+b,0)*10}
+const bar=id=>`<div><button class="btn" onclick="chk('${id}')">✅ Verificar</button><button class="btn alt" onclick="rst('${id}')">🔄 Reintentar</button> <span class="sc"></span></div>`;
+function chk(id){const d=$("#"+id),r=R[id];let c=0;
+d.querySelectorAll(".q").forEach((q,i)=>{const f=q.querySelector(".fb");q.classList.remove("ok","bad");
+const v=r.t==="mc"?(q.querySelector("input:checked")||{}).value:q.querySelector(".bl,textarea,select").value;
+if(v===undefined||v.trim()===""){f.textContent="Responde primero esta pregunta.";return}
+const g=r.t==="mc"?(+v===r.a[i]):r.a[i].includes(norm(v));
+if(g)c++;q.classList.add(g?"ok":"bad");f.textContent=g?"✅ ¡Correcto!":"❌ Casi. Inténtalo otra vez."});
+S[id]=c;d.querySelector(".sc").textContent="Resultado: "+c+"/"+r.a.length+(c===r.a.length?" 🎉 ¡Perfecto!":"");pts()}
+function rst(id){const d=$("#"+id);d.querySelectorAll("input[type=radio]").forEach(x=>x.checked=false);d.querySelectorAll(".bl,textarea,select").forEach(x=>x.value="");d.querySelectorAll(".q").forEach(q=>q.classList.remove("ok","bad"));d.querySelectorAll(".fb,.sc").forEach(x=>x.textContent="");S[id]=0;pts()}
+function mc(id,items){R[id]={t:"mc",a:items.map(i=>i[2])};
+return `<div id="${id}">`+items.map((it,i)=>`<div class="q"><p><b>${i+1}.</b> ${it[0]} ${sp(it[0].replace("___","blank")+". "+it[1].join(". "))}</p>`+it[1].map((o,j)=>`<label class="o"><input type="radio" name="${id}${i}" value="${j}"><span>${o}</span></label>`).join("")+`<div class="fb"></div></div>`).join("")+bar(id)+`</div>`}
+function fl(id,items){R[id]={t:"x",a:items.map(i=>i[1].map(norm))};
+return `<div id="${id}">`+items.map((it,i)=>`<div class="q"><p><b>${i+1}.</b> ${it[0].replace("___",'<input class="bl" autocomplete="off" autocapitalize="off" spellcheck="false">')} ${sp(it[0].replace("___","blank").replace(/\(.*?\)/,""))}</p><div class="fb"></div></div>`).join("")+bar(id)+`</div>`}
+function wr(id,items){R[id]={t:"x",a:items.map(i=>i[2].map(norm))};
+return `<div id="${id}">`+items.map((it,i)=>`<div class="q"><p><b>${i+1}.</b> ${it[0]}${it[1]?`<br><small>💡 ${it[1]}</small>`:""}</p><textarea rows="2" placeholder="Escribe aquí…" autocapitalize="off" spellcheck="false"></textarea><div class="fb"></div></div>`).join("")+bar(id)+`</div>`}
+function mt(id,items){const n=items.length,ix=items.map((_,i)=>(i*5+2)%n);R[id]={t:"x",a:items.map((_,i)=>[String(i)])};
+return `<div id="${id}">`+items.map((it,i)=>`<div class="q"><p><b>${i+1}.</b> ${it[0]}… ${sp(it[0])}</p><select><option value="">Elige la segunda mitad…</option>${ix.map(j=>`<option value="${j}">${items[j][1]}</option>`).join("")}</select><div class="fb"></div></div>`).join("")+bar(id)+`</div>`}
+function fw(id){return `<div id="${id}"><textarea rows="5" placeholder="Escribe tus oraciones aquí…" spellcheck="false"></textarea><button class="btn" onclick="fwc('${id}')">✅ Verificar mi escritura</button><div class="fb"></div></div>`}
+function fwc(id){const t=$("#"+id+" textarea").value,f=$("#"+id+" .fb"),need=id==="free1"?3:2;
+const ok=t.split(/[.!?\n]+/).filter(s=>/\bthe\s+[a-z]+(\s+[a-z']+){0,6}\s*,\s*the\s+[a-z]+/i.test(s)).length;
+f.style.color=ok>=need?"#00b85c":"#d6002f";
+f.textContent=ok>=need?"🎉 ¡Excelente! Usaste “The… the…” en "+ok+" oraciones.":"Encontré "+ok+" de "+need+" oraciones con la estructura. Revisa que cada una empiece con “The”, tenga coma y otro “the”."}
+function tg(b){const t=b.nextElementSibling;t.hidden=!t.hidden;b.textContent=t.hidden?"📄 Mostrar transcripción":"🙈 Ocultar transcripción"}
+function lis(id,txt,qs){return `<div style="margin:10px 0">${sp(txt,"Escuchar audio")}</div><button class="btn alt" onclick="tg(this)">📄 Mostrar transcripción</button><div class="tr" hidden>${txt}</div><h3 style="color:var(--b)">Preguntas</h3>`+mc(id,qs)}
+function rd(id,title,txt,qs){return `<div class="txt"><h3 style="margin-top:0">${title} ${sp(title)}</h3><p>${txt}</p>${sp(txt,"Escuchar el texto")}</div><h3>Preguntas</h3>`+mc(id,qs)}
+const TF=["True","False"];
+
+$("#egs").innerHTML=[["The more you practice, the better you speak.","Cuanto más practicas, mejor hablas."],["The sooner we leave, the sooner we arrive.","Cuanto antes salgamos, antes llegamos."],["The less you worry, the happier you are.","Cuanto menos te preocupas, más feliz eres."],["The bigger the house, the higher the rent.","Cuanto más grande la casa, más alto el alquiler."],["The more tired I am, the less I study.","Cuanto más cansado estoy, menos estudio."],["The bigger, the better.","Cuanto más grande, mejor."]].map(e=>`<div class="eg">${sp(e[0])}<div><b>${e[0]}</b><small>${e[1]}</small></div></div>`).join("");
+
+$("#quizBox").innerHTML=mc("qz",[
+["The ___ you study, the better your grades are.",["harder","hard","hardest"],0],
+["The more you eat, ___ you feel.",["fuller","the fuller","the fullest"],1],
+["The less money I spend, ___ I save.",["more","the most","the more"],2],
+["The longer the movie, ___ I feel.",["the more tired","more tired","the most tired"],0],
+["The earlier we leave, ___ traffic we find.",["less","the less","the least"],1],
+["Which sentence is correct?",["The more you practice, the better you speak.","The more you practice, better you speak.","More you practice, the better you speak."],0]]);
+
+$("#lisBox").innerHTML=lis("l1","Hi everyone, and welcome back to Daily Life Radio. Today I want to talk about my first year living in a big city. The longer I lived here, the more I loved it. At first, the noise was terrible. The louder the streets were, the less I slept. But the more I explored, the more I discovered quiet parks and small cafés. The more people I met, the less lonely I felt. My neighbor Carla taught me a lot. She says, “The earlier you wake up, the more you can enjoy the city.” So I tried it. The earlier I woke up, the better my days became. I also learned about money. The more I ate out, the less I saved, so now I cook at home. The less I spend, the happier I feel. Of course, it isn’t perfect. The bigger the city, the higher the rent! But I wouldn’t change anything. The more I think about it, the more sure I am that I made the right choice. Thanks for listening, and see you next week.",[
+["What is the speaker talking about?",["Her first year in a big city","Her new job","A trip to the mountains"],0],
+["What happened when the streets were louder?",["She worked more","She slept less","She cooked more"],1],
+["What does Carla recommend?",["Waking up earlier","Moving to a small town","Eating out more"],0],
+["Why does the speaker cook at home now?",["She loves recipes","Her neighbor asked her to","To save money"],2],
+["What is the problem with bigger cities, according to the speaker?",["The rent is higher","The parks are closed","The people are unfriendly"],0]]);
+
+$("#readBox").innerHTML=rd("r1","The Secret of Learning a Language","Many adults say they don’t have time to learn English. However, experts explain that the secret is not studying for hours, but studying every day. The more regularly you practice, the faster your brain remembers new words. A study of 500 adult learners showed interesting results. The students who practiced fifteen minutes daily improved more than those who studied three hours once a week. The more often they listened to English, the better their pronunciation became. The more they read, the larger their vocabulary grew.<br><br>Maria, a nurse from Chile, is a good example. At first, she was afraid of speaking. “The more I worried about mistakes, the less I said,” she remembers. Then she changed her strategy and started speaking with a friend every evening. The more she spoke, the more confident she felt. After one year, she passed an international exam. Her advice is simple: the sooner you start, the sooner you will see results. Don’t wait for the perfect moment. The harder you try, the luckier you get, and the more fun you will have along the way.",[
+["What is the main idea of the text?",["Studying every day is better than studying for hours once a week","Adults can’t learn English","Nurses learn languages faster"],0],
+["Which group improved more?",["Students who studied three hours weekly","Students who practiced fifteen minutes daily","Students who never practiced"],1],
+["Why did Maria say little at first?",["She had no friends","She was afraid of making mistakes","She didn’t like English"],1],
+["Maria passed an international exam after one year.",TF,0],
+["The study says that three hours once a week is the best method.",TF,1]]);
+
+$("#fillBox").innerHTML=fl("f1",[
+["The ___ (cold) the weather, the more tea I drink.",["colder"]],
+["The more I read, the ___ (good) my vocabulary is.",["better"]],
+["The earlier you wake up, the ___ (much) time you have.",["more"]],
+["The ___ (big) the house, the higher the rent.",["bigger"]],
+["The less I worry, the ___ (happy) I am.",["happier"]],
+["The ___ (fast) you drive, the more dangerous it is.",["faster"]]]);
+
+$("#trBox").innerHTML=wr("w1",[
+["Cuanto más practicas, mejor hablas.","practice / speak / good",["The more you practice, the better you speak"]],
+["Cuanto más trabajo, más cansado estoy.","work / tired",["The more I work, the more tired I am","The more I work, the more tired I feel","The more I work, the more tired I get"]],
+["Cuanto menos hablas, menos aprendes.","talk / learn",["The less you talk, the less you learn","The less you speak, the less you learn"]],
+["Cuanto más grande es la ciudad, más ruido hay.","big / city / noise",["The bigger the city, the more noise there is","The bigger the city, the more noise there will be"]]]);
+$("#free1").innerHTML=fw("free1");
+
+$("#matchBox").innerHTML=mt("m1",[
+["The more you sleep","the better you feel."],
+["The sooner you start","the sooner you finish."],
+["The less you eat","the hungrier you get."],
+["The harder you work","the more you earn."],
+["The longer you wait","the more impatient you get."],
+["The bigger the car","the more gas it uses."]]);
+
+$("#scrBox").innerHTML=wr("s1",[
+["you / the / more / sleep / the / better / feel / you / the","",["The more you sleep, the better you feel"]],
+["the / sooner / leave / we / the / we / arrive / sooner / the","",["The sooner we leave, the sooner we arrive"]],
+["less / the / you / spend / the / more / save / you / the","",["The less you spend, the more you save"]],
+["the / cheaper / the / hotel / the / smaller / room / the","",["The cheaper the hotel, the smaller the room"]]]);
+
+$("#hLis").innerHTML=lis("hl",  "Hello, this is Tom. Let me tell you about my new gym routine. The more I exercise, the stronger I feel. At first I went twice a week, but the more I went, the more I wanted to go. Now I go five times a week! My coach says, “The more water you drink, the faster you recover.” So I carry a bottle everywhere. The healthier I eat, the more energy I have in the morning. But the later I go to bed, the more tired I am at the gym, so now I sleep early. The sooner you try it, the better!",[
+["How many times a week does Tom go to the gym now?",["Twice","Five times","Seven times"],1],
+["What does the coach say?",["Drink more to recover faster","Eat less to be stronger","Go to bed later"],0],
+["Why does Tom sleep early now?",["Late nights make him tired at the gym","He wakes up at noon","His coach is angry"],0],
+["What happens when Tom eats healthier?",["He feels hungrier","He has more energy","He sleeps less"],1]]);
+
+$("#hRead").innerHTML=rd("hr","A Small Town or a Big City?","Sara lives in a small town, and her cousin Leo lives in a big city. They often argue about which place is better. Sara says, “The smaller the town, the calmer the life.” Leo disagrees: “The bigger the city, the more opportunities you have.” Sara likes that the fewer cars there are, the cleaner the air is. Leo enjoys that the more people he meets, the more ideas he gets. Last summer, they exchanged homes for two weeks. Sara discovered that the busier the streets were, the more energetic she felt. Leo found that the quieter the evenings were, the better he slept. In the end, they agreed: the best place depends on what you need.",[
+["Who thinks that life is calmer in a small town?",["Leo","Sara","Both of them"],1],
+["What does Leo like about big cities?",["The cleaner air","The cheaper rent","Meeting people and getting ideas"],2],
+["They exchanged homes for a whole year.",TF,1],
+["What did Leo discover during the exchange?",["Quiet evenings helped him sleep better","He hated small towns","He needed a bigger house"],0]]);
+
+$("#hFill").innerHTML=fl("hf",[
+["The ___ (hot) the soup, the longer I wait.",["hotter"]],
+["The more you smile, the ___ (friendly) you look.",["friendlier"]],
+["The ___ (high) the mountain, the colder it is.",["higher"]],
+["The less sugar I eat, the ___ (healthy) I feel.",["healthier"]]]);
+
+$("#hTr").innerHTML=wr("hw",[
+["Cuanto más ves series, menos duermes.","watch series / sleep",["The more series you watch, the less you sleep","The more you watch series, the less you sleep","The more TV shows you watch, the less you sleep"]],
+["Cuanto más temprano llegas, mejor lugar consigues.","early / arrive / good seat",["The earlier you arrive, the better seat you get","The earlier you arrive, the better seat you will get","The earlier you arrive, the better seat you have"]],
+["Cuanto más estudio, más confianza tengo.","study / confident",["The more I study, the more confident I feel","The more I study, the more confident I am","The more I study, the more confident I get","The more I study, the more confidence I have"]]]);
+$("#free2").innerHTML=fw("free2");
+</script>
+</body>
+</html>
